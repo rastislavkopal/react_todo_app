@@ -2,10 +2,12 @@ import React, { useState } from 'react'
 import { IoCloseCircleSharp } from "react-icons/io5";
 import { v4 as uuid } from 'uuid';
 
-export default function AddTaskModal({selectedColumndId, setColumns, columns, setIsAddTaskModalOpen}) {
+export default function AddTaskModal({selectedColumndId, setColumns, columns, setIsAddTaskModalOpen, isTaskModalOpen}) {
     
     const [taskTitle, settaskTitle] = useState('');
     const [taskDescription, setTaskDescription] = useState('');
+    const [errors, setErrors] = useState({});
+
     
     const closeModal = (e) => {
         setIsAddTaskModalOpen(false);
@@ -13,7 +15,11 @@ export default function AddTaskModal({selectedColumndId, setColumns, columns, se
 
     const submitNewTask = (e) => {
         e.preventDefault();
-        console.log('new task');
+
+        if (!taskTitle || taskTitle.trim() === '') {
+            setErrors({...errors, "taskTitle": 'Title is required'});
+            return;
+        }
         
         const newTask = {
             id: uuid(),
@@ -35,34 +41,35 @@ export default function AddTaskModal({selectedColumndId, setColumns, columns, se
     }
 
     return (
-        <div className='add_task_modal'>
-            <div className='add_task_modal_content'>
-                index
+        <div className={` ${(isTaskModalOpen) ? "add_task_modal" : "add_task_modal_content_closed"}`}>
+            <div className={`${ (isTaskModalOpen) ? "add_task_modal_content" : "add_task_modal_content_closed" }`}>
                 <button onClick={ (e) => closeModal(e) } style={{float: "right"}}>
                     <IoCloseCircleSharp />
                 </button>
                 <form onSubmit={ (e) => submitNewTask(e)}>
                     <div className="form-group">
-                        <label htmlFor="taskTitle">Example label</label>
+                        <label htmlFor="taskTitle">Nazov tasku</label>
                         <input type="text" className="form-control"
                             id="taskTitle"
-                            placeholder="Example input"
+                            placeholder="Dokoncit KAJ semestralku.."
                             // for="taskTitle"
                             value={taskTitle}
                             onChange={(e) => settaskTitle(e.target.value)}
                         />
+                        <span style={{ color: "red" }}>{errors["taskTitle"]}</span>
                     </div>
                     {/* <div className="form-group">
                         <label for="formGroupExampleInput2">Another label</label>
                         <input type="text" className="form-control" id="formGroupExampleInput2" placeholder="Another input" />
                     </div> */}
                     <div className="form-group">
-                        <label htmlFor="taskDescription">Example textarea</label>
+                        <label htmlFor="taskDescription">Popis ulohu</label>
                         <textarea className="form-control" id="taskDescription" rows="3"
                             value={taskDescription}
                             onChange={(e) => setTaskDescription(e.target.value)}
                             >
                         </textarea>
+                        <span style={{ color: "red" }}>{errors["taskDescription"]}</span>
                     </div>
                     <button type="submit" className="btn btn-primary">Submit</button>
                 </form>

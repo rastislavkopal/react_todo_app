@@ -3,11 +3,11 @@ import initRows from './initRows';
 
 const initColumns = {
     [uuid()]: {
-      name: "Requested",
+      name: "Backlog",
       items: initRows
     },
     [uuid()]: {
-      name: "To do",
+      name: "To do..",
       items: []
     },
     [uuid()]: {

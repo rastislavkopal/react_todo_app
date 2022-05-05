@@ -4,8 +4,8 @@ import CustomDragDropContext from "./components/DragDropContext";
 export default function App() {
   
   return (
-    <div style={{ display: "flex", justifyContent: "center", height: "100%" }}>
+    <main style={{ display: "flex", justifyContent: "center", height: "100%" }}>
       <CustomDragDropContext />
-    </div>
+    </main>
   );
 }

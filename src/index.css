@@ -45,7 +45,6 @@ code {
 }
 
 .add_task_modal {
-  /* display: none; */
   position: fixed;
   z-index: 1;
   left: 0;
@@ -57,10 +56,21 @@ code {
   background-color: rgba(0, 0, 0, 0.4);
 }
 
+.add_task_modal_content_closed{
+  position: fixed;
+  visibility: hidden;
+    /* width: 0px;
+    height: 0; */
+}
+
 .add_task_modal_content {
+  display: block;
   background-color: #fefefe;
   margin: 10% auto;
   padding: 20px;
   border: 1px solid #888;
   width: 60%;
+  transform: scale(1);
+  transition: all 500ms ease-in-out;
 }
+

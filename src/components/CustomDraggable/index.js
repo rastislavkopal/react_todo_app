@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { DragDropContext, Draggable, Droppable } from "react-beautiful-dnd";
+import React from "react";
+import {Draggable } from "react-beautiful-dnd";
 
 export default function CustomDraggable({item, index}) {
 

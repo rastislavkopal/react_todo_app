@@ -1,9 +1,7 @@
 import React, { useState } from "react";
 import { DragDropContext, Draggable, Droppable } from "react-beautiful-dnd";
 import initColumns from "./data/initColumns";
-import CustomDraggable from "../CustomDraggable";
 import { IoAddCircle } from "react-icons/io5";
-import { v4 as uuid } from 'uuid';
 import AddTaskModal from "../AddTaskModal";
  
 const onDragEnd = (result, columns, setColumns) => {
@@ -63,12 +61,13 @@ export default function CustomDragDropContext() {
         {Object.entries(columns).map(([columnId, column], index) => {
           return (
             <div className="drag_n_drop_context" key={columnId} >
-              {isAddTaskModalOpen && 
+              { 
               <AddTaskModal
                 selectedColumndId={selectedColumndId}
                 setColumns={setColumns}
                 columns={columns}
                 setIsAddTaskModalOpen={setIsAddTaskModalOpen} 
+                isTaskModalOpen={isAddTaskModalOpen}
               /> }
               <h2>{column.name}</h2>
               <div style={{ margin: 8 }}>

@@ -1,11 +1,11 @@
 import { v4 as uuid } from 'uuid';
 
 const initRows = [
-    { id: uuid(), title: "First task" },
-    { id: uuid(), title: "Second task" },
-    { id: uuid(), title: "Third task" },
-    { id: uuid(), title: "Fourth task" },
-    { id: uuid(), title: "Fifth task" }
+    { id: uuid(), title: "Prva uloha, prestat prokrastinovat" },
+    { id: uuid(), title: "Vytvorit react projekt" },
+    { id: uuid(), title: "Vymysliet co teraz" },
+    { id: uuid(), title: "Spravit co som vymyslel" },
+    { id: uuid(), title: "Relax" }
 ];
 
 export default initRows;
