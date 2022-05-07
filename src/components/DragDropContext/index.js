@@ -83,14 +83,12 @@ export default function CustomDragDropContext() {
               <h2>{column.name}</h2>
               <div style={{ margin: 8 }}>
                 <div className="droppable_column_header">
-                  <button 
+                  <button className="btn float-end mb-2"
                     onClick={() => { addTask(columnId) }}>
-                      <IoAddCircle style={{ 
-                          width: 25,
-                          height: 25,
-                          float: "right",
-                          marginRight: 5,
-                          padding: 2,
+                      <IoAddCircle style={{
+                          color: "yellow",
+                          width: "28px",
+                          height: "28px",
                           }}
                         />
                   </button>

@@ -39,7 +39,7 @@ code {
 }
 
 .droppable_column_header {
- min-height: 30px; 
+ min-height: 38px; 
  display: block;
  background-color: rgb(175, 97, 19);
 }
@@ -258,4 +258,8 @@ code {
   left: 20%;
   top: 10%;
   background-color: #f2f2f2;
+}
+
+.body_part{
+  min-height: 75vh;
 }

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 
 import { IoMenuOutline } from "react-icons/io5";
+import { Link } from "react-router-dom";
 
 export default function Navbar() {
   
@@ -26,10 +27,14 @@ export default function Navbar() {
 
   return (
     <nav className={`${(offset !== 0 ) ? "scrolled" : "not_scrolled"} main_nav ${(isSmall) ? "responsive" : ""}`} id="myTopnav">
-        <a href="/#" className="active">Tasks</a>
-        <a href="/#">Stuff</a>
+        {/* <a href="/#" className="active">Tasks</a> */}
+        {/* <a href="/#">Stuff</a>
         <a href="/#">Contact</a>
-        <a href="/#">About</a>
+        <a href="/#">About</a> */}
+        <Link className="active" to="/">Home</Link>
+        <Link to="/stuff">Stuff</Link>
+        <Link to="/about">about</Link>
+        <Link to="/contact">contact</Link>
         <a href="/#" className="navbar_icon" onClick={ () => toggleActiveNavbar()}>
           <IoMenuOutline />
         </a>

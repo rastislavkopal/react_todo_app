@@ -64,7 +64,7 @@ export default function AddTaskModal({selectedColumndId, setColumns, columns, se
                         <input type="text" className="form-control" id="formGroupExampleInput2" placeholder="Another input" />
                     </div> */}
                     <div className="form-group mt-3">
-                        <label htmlFor="taskDescription">Popis ulohu</label>
+                        <label htmlFor="taskDescription">Popis</label>
                         <textarea className="form-control mt-2" id="taskDescription" rows="3"
                             value={taskDescription}
                             onChange={(e) => setTaskDescription(e.target.value)}

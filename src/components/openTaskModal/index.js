@@ -83,7 +83,7 @@ export default function OpenTaskModal({ openedTaskId, setOpenedTaskId, setColumn
                         <input type="text" className="form-control" id="formGroupExampleInput2" placeholder="Another input" />
                     </div> */}
                     <div className="form-group mt-2">
-                        <label htmlFor="taskDescription">Popis ulohy</label>
+                        <label htmlFor="taskDescription">Popis</label>
                         <textarea className="form-control mt-2" id="taskDescription" rows="3"
                             value={ description }
                             onChange={(e) => setDescription(e.target.value) }
