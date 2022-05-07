@@ -43,16 +43,17 @@ export default function AddTaskModal({selectedColumndId, setColumns, columns, se
     return (
         <div className={` ${(isTaskModalOpen) ? "add_task_modal" : "add_task_modal_content_closed"}`}>
             <div className={`${ (isTaskModalOpen) ? "add_task_modal_content" : "add_task_modal_content_closed" }`}>
-                <button onClick={ (e) => closeModal(e) } style={{float: "right"}}>
-                    <IoCloseCircleSharp />
+                <button className='btn' onClick={ (e) => closeModal(e) } style={{float: "right"}}>
+                    <IoCloseCircleSharp
+                        style={{ color: "red", width: "30px", height: "30px" }}
+                    />
                 </button>
                 <form onSubmit={ (e) => submitNewTask(e)}>
-                    <div className="form-group">
+                    <div className="form-group mt-3">
                         <label htmlFor="taskTitle">Nazov tasku</label>
                         <input type="text" className="form-control"
                             id="taskTitle"
                             placeholder="Dokoncit KAJ semestralku.."
-                            // for="taskTitle"
                             value={taskTitle}
                             onChange={(e) => settaskTitle(e.target.value)}
                         />
@@ -62,16 +63,16 @@ export default function AddTaskModal({selectedColumndId, setColumns, columns, se
                         <label for="formGroupExampleInput2">Another label</label>
                         <input type="text" className="form-control" id="formGroupExampleInput2" placeholder="Another input" />
                     </div> */}
-                    <div className="form-group">
+                    <div className="form-group mt-3">
                         <label htmlFor="taskDescription">Popis ulohu</label>
-                        <textarea className="form-control" id="taskDescription" rows="3"
+                        <textarea className="form-control mt-2" id="taskDescription" rows="3"
                             value={taskDescription}
                             onChange={(e) => setTaskDescription(e.target.value)}
                             >
                         </textarea>
                         <span style={{ color: "red" }}>{errors["taskDescription"]}</span>
                     </div>
-                    <button type="submit" className="btn btn-primary">Submit</button>
+                    <button type="submit" className="btn btn-primary mt-3">Vytvorit</button>
                 </form>
             </div>
         </div>

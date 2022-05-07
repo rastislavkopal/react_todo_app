@@ -26,11 +26,11 @@ export default function Navbar() {
 
   return (
     <nav className={`${(offset !== 0 ) ? "scrolled" : "not_scrolled"} main_nav ${(isSmall) ? "responsive" : ""}`} id="myTopnav">
-        <a href={() => false} className="active">Tasks</a>
-        <a href={() => false}>Stuff</a>
-        <a href={() => false}>Contact</a>
-        <a href={() => false}>About</a>
-        <a href={() => false} className="navbar_icon" onClick={ () => toggleActiveNavbar()}>
+        <a href="/#" className="active">Tasks</a>
+        <a href="/#">Stuff</a>
+        <a href="/#">Contact</a>
+        <a href="/#">About</a>
+        <a href="/#" className="navbar_icon" onClick={ () => toggleActiveNavbar()}>
           <IoMenuOutline />
         </a>
     </nav>

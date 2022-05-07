@@ -3,6 +3,7 @@ import { DragDropContext, Draggable, Droppable } from "react-beautiful-dnd";
 import initColumns from "./data/initColumns";
 import { IoAddCircle } from "react-icons/io5";
 import AddTaskModal from "../AddTaskModal";
+import OpenTaskModal from "../openTaskModal";
  
 const onDragEnd = (result, columns, setColumns) => {
   if (!result.destination) 
@@ -48,6 +49,8 @@ export default function CustomDragDropContext() {
   const [columns, setColumns] = useState(initColumns);
   const [selectedColumndId, setSelectedColumndId] = useState('');
   const [isAddTaskModalOpen, setIsAddTaskModalOpen] = useState(false);
+  const [openedTaskId, setOpenedTaskId] = useState('');
+
 
   const addTask = (columnId) => {
     setSelectedColumndId(columnId)
@@ -58,6 +61,14 @@ export default function CustomDragDropContext() {
     <DragDropContext
         onDragEnd={result => onDragEnd(result, columns, setColumns)}
       >
+        { openedTaskId !== '' &&
+          <OpenTaskModal 
+            OpenedTaskId={openedTaskId}
+            setOpenedTaskId={setOpenedTaskId}
+            setColumns={setColumns}
+            columns={columns}
+            />
+        }
         {Object.entries(columns).map(([columnId, column], index) => {
           return (
             <div className="drag_n_drop_context" key={columnId} >
@@ -101,14 +112,17 @@ export default function CustomDragDropContext() {
                             >
                                 {(provided, snapshot) => {
                                     return (
-                                        <div className="draggable_item"
+                                        <div 
+                                            className="draggable_item"
                                             ref={provided.innerRef}
                                             {...provided.draggableProps}
                                             {...provided.dragHandleProps}
                                             style={{
-                                                backgroundColor: snapshot.isDragging ? "#5e9ecc" : "#456C86",
+                                                backgroundColor: snapshot.isDragging ? "#5e9ecc" : "#1b496b",
+                                                color: "white",
                                                 ...provided.draggableProps.style
                                             }}
+                                            onClick={ () => { setOpenedTaskId(provided.draggableProps['data-rbd-draggable-id']) }}
                                         >
                                             {item.title}
                                         </div>
