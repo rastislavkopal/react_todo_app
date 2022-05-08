@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from 'react'
 
 import { IoMenuOutline } from "react-icons/io5";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
+
 
 export default function Navbar() {
   
   const [isSmall, setIsSmall] = useState(false);
   const [offset, setOffset] = useState(0);
+  const loc = useLocation();
 
   useEffect(() => {
     window.removeEventListener('scroll', () => setOffset(window.pageYOffset));
@@ -20,10 +22,10 @@ export default function Navbar() {
 
   return (
     <nav className={`${(offset !== 0 ) ? "scrolled" : "not_scrolled"} main_nav ${(isSmall) ? "responsive" : ""}`} id="myTopnav">
-        <Link className="active" to="/">Home</Link>
-        <Link to="/stuff">Stuff</Link>
-        <Link to="/about">about</Link>
-        <Link to="/contact">contact</Link>
+        <Link className={ (loc.pathname === "/") ? "active" : "" } to="/">Home</Link>
+        <Link className={ (loc.pathname === "/stuff") ? "active" : "" } to="/stuff">Stuff</Link>
+        <Link className={ (loc.pathname === "/about") ? "active" : "" } to="/about">About</Link>
+        <Link className={ (loc.pathname === "/contact") ? "active" : "" } to="/contact">Contact</Link>
         <a href="/#" className="navbar_icon" onClick={ () => toggleActiveNavbar()}>
           <IoMenuOutline />
         </a>
