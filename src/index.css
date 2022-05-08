@@ -263,3 +263,26 @@ code {
 .body_part{
   min-height: 75vh;
 }
+
+.player_wrapper{
+  width: 100%;
+  min-height: 400px;
+}
+
+.canvas{
+  margin: auto;
+}
+
+.bg-1 { 
+  background-color: #089c7f; 
+  color: #ffffff;
+}
+
+.bg-2 { 
+  background-color: #333c50; 
+  color: #ffffff;
+}
+.bg-3 { 
+  background-color: #ffffff; 
+  color: #555555;
+}
