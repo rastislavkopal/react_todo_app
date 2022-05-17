@@ -63,7 +63,7 @@ export default function CustomDragDropContext() {
       >
         { openedTaskId !== '' &&
           <OpenTaskModal 
-            OpenedTaskId={openedTaskId}
+            openedTaskId={openedTaskId}
             setOpenedTaskId={setOpenedTaskId}
             setColumns={setColumns}
             columns={columns}
@@ -120,7 +120,8 @@ export default function CustomDragDropContext() {
                                                 color: "white",
                                                 ...provided.draggableProps.style
                                             }}
-                                            onClick={ () => { setOpenedTaskId(provided.draggableProps['data-rbd-draggable-id']) }}
+                                            onClick={ () => { setOpenedTaskId(provided.draggableProps['data-rbd-draggable-id']); 
+                                          /*console.log(provided.draggableProps)*/ }}
                                         >
                                             {item.title}
                                         </div>

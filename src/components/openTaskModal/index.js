@@ -10,9 +10,12 @@ export default function OpenTaskModal({ openedTaskId, setOpenedTaskId, setColumn
   // find selected item
   Object.entries(columns).forEach(([columnId, column], index) => {
     Object.entries(column.items).forEach(([itemId, item], index) => {
-      selectedItem = item;
-      selectedIndex = index;
-      selectedColumndId = columnId;
+      if (item.id === openedTaskId) {
+        selectedItem = item;
+        selectedIndex = index;
+        selectedColumndId = columnId;
+      }
+
     });
   });
 
