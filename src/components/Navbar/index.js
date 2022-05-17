@@ -9,6 +9,7 @@ export default function Navbar() {
   const [isSmall, setIsSmall] = useState(false);
   const [offset, setOffset] = useState(0);
   const loc = useLocation();
+  console.log()
 
   useEffect(() => {
     window.removeEventListener('scroll', () => setOffset(window.pageYOffset));
@@ -21,14 +22,16 @@ export default function Navbar() {
   };
 
   return (
-    <nav className={`${(offset !== 0 ) ? "scrolled" : "not_scrolled"} main_nav ${(isSmall) ? "responsive" : ""}`} id="myTopnav">
-        <Link className={ (loc.pathname === "/") ? "active" : "" } to="/">Home</Link>
-        <Link className={ (loc.pathname === "/stuff") ? "active" : "" } to="/stuff">Stuff</Link>
-        <Link className={ (loc.pathname === "/about") ? "active" : "" } to="/about">About</Link>
-        <Link className={ (loc.pathname === "/contact") ? "active" : "" } to="/contact">Contact</Link>
-        <a href="/#" className="navbar_icon" onClick={ () => toggleActiveNavbar()}>
-          <IoMenuOutline />
-        </a>
-    </nav>
+    <header>
+      <nav className={`${(offset !== 0 ) ? "scrolled" : "not_scrolled"} main_nav ${(isSmall) ? "responsive" : ""}`} id="myTopnav">
+          <Link className={ (loc.pathname === "/") ? "active" : "" } to="/">Home</Link>
+          <Link className={ (loc.pathname === "/stuff") ? "active" : "" } to="/stuff">Stuff</Link>
+          <Link className={ (loc.pathname === "/about") ? "active" : "" } to="/about">About</Link>
+          <Link className={ (loc.pathname === "/contact") ? "active" : "" } to="/contact">Contact</Link>
+          <a href="/#" className="navbar_icon" onClick={ () => toggleActiveNavbar()}>
+            <IoMenuOutline />
+          </a>
+      </nav>
+    </header>
   )
 }

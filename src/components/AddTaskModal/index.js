@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useRef, useEffect  } from 'react'
 import { IoCloseCircleSharp } from "react-icons/io5";
 import { v4 as uuid } from 'uuid';
 
@@ -7,6 +7,13 @@ export default function AddTaskModal({selectedColumndId, setColumns, columns, se
     const [taskTitle, settaskTitle] = useState('');
     const [taskDescription, setTaskDescription] = useState('');
     const [errors, setErrors] = useState({});
+    const titleInput = useRef();
+
+    useEffect(() => {
+        setTimeout(() => {
+            titleInput.current.focus();
+          }, 1);
+    }, [isTaskModalOpen]);
 
     
     const closeModal = (e) => {
@@ -17,7 +24,7 @@ export default function AddTaskModal({selectedColumndId, setColumns, columns, se
         e.preventDefault();
 
         if (!taskTitle || taskTitle.trim() === '') {
-            setErrors({...errors, "taskTitle": 'Title is required'});
+            setErrors({...errors, "taskTitle": 'Nazov ulohy je povinny.'});
             return;
         }
         
@@ -51,11 +58,14 @@ export default function AddTaskModal({selectedColumndId, setColumns, columns, se
                 <form onSubmit={ (e) => submitNewTask(e)}>
                     <div className="form-group mt-3">
                         <label htmlFor="taskTitle">Nazov tasku</label>
-                        <input type="text" className="form-control"
+                        <input
+                            ref={titleInput}
+                            type="text"
+                            className="form-control"
                             id="taskTitle"
                             placeholder="Dokoncit KAJ semestralku.."
                             value={taskTitle}
-                            onChange={(e) => settaskTitle(e.target.value)}
+                            onChange={(e) => settaskTitle(e.target.value)}  
                         />
                         <span style={{ color: "red" }}>{errors["taskTitle"]}</span>
                     </div>

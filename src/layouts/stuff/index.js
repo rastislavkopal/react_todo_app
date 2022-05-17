@@ -1,5 +1,7 @@
 import React from "react";
 import Video from "./video";
+import CanvasDraw from "react-canvas-draw";
+import TodoLogo from './svg/icon';
 
 export default function Stuff() {
   React.useEffect(() => {
@@ -22,18 +24,34 @@ export default function Stuff() {
   }, []);
 
   return (
-    <div className="body_part">
+    <section className="body_part">
       <Video />
       <hr/>
+      <div className="mt-5">
+        <h5>Wanna draw?? Let's do it!</h5>
+        <CanvasDraw
+          style={{
+            boxShadow:
+              "0 13px 27px -5px rgba(50, 50, 93, 0.25),    0 8px 16px -8px rgba(0, 0, 0, 0.3)"
+          }}
+        />
+      </div>
+      <hr />
+      <h5>Beautiful Canvas :)</h5>
       <canvas
         id="stuff_canvas"
         width="300"
         height="250"
         style={{ border: "1px solid #d3d3d3" }}
-        className="canvas"
+        className="canvas mt-5"
       >
         Your browser does not support the HTML canvas tag.
       </canvas>
-    </div>
+
+      <hr />
+      {/* <img src={logo} alt="Kiwi standing on oval"></img> */}
+      <h5>Beautiful generated SVG graphics :)</h5>
+      <TodoLogo />
+    </section>
   );
 }

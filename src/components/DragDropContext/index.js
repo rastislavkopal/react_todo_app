@@ -71,8 +71,8 @@ export default function CustomDragDropContext() {
         }
         {Object.entries(columns).map(([columnId, column], index) => {
           return (
-            <div className="drag_n_drop_context" key={columnId} >
-              { 
+            <div className="drag_n_drop_context justify-content-center " key={columnId} >
+              { isAddTaskModalOpen &&
               <AddTaskModal
                 selectedColumndId={selectedColumndId}
                 setColumns={setColumns}

@@ -12,16 +12,47 @@ code {
     monospace;
 }
 
-.drag_n_drop_context {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  /* justify-content: center;
-  width: 100%;
-  height: 100%;
-  background-color: #282c34;
-  color: white; */
+@media (max-width: 600px) {
+  .taskRow {
+    width: 100%;
+  }
 }
+
+@media (max-width: 900px) {
+  .taskRow {
+    width: 90%;
+  }
+}
+
+@media (min-width: 900px) {
+  .taskRow {
+    width: 75%;
+  }
+}
+
+/* @media (max-width: 1920px) { */
+  .drag_n_drop_context {
+    /* display: flex; */
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    /* width: 100%; */
+    height: 100%;
+    /* background-color: #282c34; */
+    /* color: white; */
+    /* overflow: scroll; */
+    margin: auto;
+  }
+  
+/* } */
+
+/* @media (min-width: 1920px) {
+  .drag_n_drop_context {
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+  }
+} */
 
 .droppable_column {
   padding: 4px;
@@ -246,6 +277,7 @@ code {
   height: 100vh;
   position: fixed;
   top: 0;
+  left:0;
   background-color:  rgba(41, 41, 41, 0.495);
 }
 
@@ -261,7 +293,7 @@ code {
 }
 
 .body_part{
-  min-height: 75vh;
+  min-height: 80vh;
 }
 
 .player_wrapper{

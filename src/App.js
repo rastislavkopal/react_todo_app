@@ -19,7 +19,7 @@ export default function App() {
       <Navbar />
         <Routes>
           <Route path="/" element={
-            <main style={{ display: "flex", justifyContent: "center", height: "100%" }}>
+            <main className="body_part taskRow d-flex mx-auto mt-3 overflow-auto">
               <CustomDragDropContext />
             </main>
           } />
@@ -30,8 +30,5 @@ export default function App() {
         
       <Footer />
     </BrowserRouter>
-
-      
-      
   );
 }

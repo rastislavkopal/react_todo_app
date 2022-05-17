@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useRef, useEffect } from 'react'
 import { IoCloseCircleSharp } from "react-icons/io5";
 
 export default function OpenTaskModal({ openedTaskId, setOpenedTaskId, setColumns, columns }) {
@@ -21,7 +21,10 @@ export default function OpenTaskModal({ openedTaskId, setOpenedTaskId, setColumn
 
   const [title, setTitle] = useState(selectedItem.title);
   const [description, setDescription] = useState( ("description" in selectedItem) ? selectedItem.description : "");
-  
+  const [errors, setErrors] = useState({});
+  const innerRef = useRef();
+  useEffect(() => innerRef.current && innerRef.current.focus());
+
   const handleDelete = (e) => {
     e.preventDefault();
 
@@ -41,6 +44,11 @@ export default function OpenTaskModal({ openedTaskId, setOpenedTaskId, setColumn
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    if (!title || title.trim() === '') {
+      setErrors({...errors, "title": 'Nazov ulohy je povinny.'});
+      return;
+    }
 
     selectedItem = {
       ...selectedItem,
@@ -73,14 +81,18 @@ export default function OpenTaskModal({ openedTaskId, setOpenedTaskId, setColumn
 
           <form onSubmit={ (e) => handleSubmit(e) }>
                     <div className="form-group">
-                        <label htmlFor="taskTitle">Nazov tasku</label>
-                        <input type="text" className="form-control"
-                            id="taskTitle"
+                        <label htmlFor="title">Nazov tasku</label>
+                        <input
+                            ref={innerRef}
+                            type="text"
+                            className="form-control"
+                            id="title"
                             value={title}
                             onChange={(e) => setTitle(e.target.value) }
                         />
-                        {/* <span style={{ color: "red" }}>{errors["taskTitle"]}</span> */}
+                        {/* <span style={{ color: "red" }}>{errors["title"]}</span> */}
                     </div>
+                        <span style={{ color: "red" }}>{errors["title"]}</span>
                     {/* <div className="form-group">
                         <label for="formGroupExampleInput2">Another label</label>
                         <input type="text" className="form-control" id="formGroupExampleInput2" placeholder="Another input" />
