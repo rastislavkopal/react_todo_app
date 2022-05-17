@@ -11,24 +11,35 @@ import {
   Routes,
   Route,
 } from "react-router-dom";
+import { Detector } from "react-detect-offline";
 
 export default function App() {
   
   return (
-    <BrowserRouter>
-      <Navbar />
-        <Routes>
-          <Route path="/" element={
-            <main className="body_part taskRow d-flex mx-auto mt-3 overflow-auto">
-              <CustomDragDropContext />
-            </main>
-          } />
-          <Route path="contact" element={<Contact />} />
-          <Route path="about" element={<About />} />
-          <Route path="stuff" element={<Stuff />} />
-        </Routes>
-        
-      <Footer />
-    </BrowserRouter>
+    <Detector
+      render={({ online }) => (
+        (online) ? <BrowserRouter>
+        <Navbar />
+          <Routes>
+            <Route path="/" element={
+              <main className="body_part taskRow d-flex mx-auto mt-3 overflow-auto">
+                <CustomDragDropContext />
+              </main>
+            } />
+            <Route path="contact" element={<Contact />} />
+            <Route path="about" element={<About />} />
+            <Route path="stuff" element={<Stuff />} />
+          </Routes>
+          
+        <Footer />
+      </BrowserRouter> : <BrowserRouter>
+          <main className="body_part w-100">
+            <h1 className="mx-auto error">You are offline, check your connection...</h1>
+          </main>
+        <Footer />
+      </BrowserRouter>
+      )}
+    />
+
   );
 }
