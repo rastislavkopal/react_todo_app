@@ -106,17 +106,27 @@ code {
   margin-left: 20%;
   margin-top: 20%;
   transform: scale(1);
-  transition: all 500ms ease-in-out;
+  transition: all 800ms ease-in-out;
 }
 
 .scrolled {
-  background-color: rgb(120, 120, 120);
+  background-color: rgb(216, 170, 3);
   opacity: 0.9;
+  -webkit-transition: all 0.6s ease-out;
+  -moz-transition: all 0.6s ease-out;
+  -o-transition: all 0.6s ease-out;
+  -ms-transition: all 0.6s ease-out;
+  transition: all 0.6s ease-out;
 }
 
 .not_scrolled{
-  background-color: rgb(43, 43, 43);
+  background-color: #089c7f;
   border: none;
+  -webkit-transition: all 0.6s ease-out;
+  -moz-transition: all 0.6s ease-out;
+  -o-transition: all 0.6s ease-out;
+  -ms-transition: all 0.6s ease-out;
+  transition: all 0.6s ease-out;
 }
 
 /* .main_nav {
@@ -312,6 +322,28 @@ code {
 .bg-2 { 
   background-color: #333c50; 
   color: #ffffff;
+}
+
+.scrolled2 {
+  background-color: #333c50;
+  opacity: 0.9;
+  color: #ffffff;
+  -webkit-transition: all 0.6s ease-out;
+  -moz-transition: all 0.6s ease-out;
+  -o-transition: all 0.6s ease-out;
+  -ms-transition: all 0.6s ease-out;
+  transition: all 0.6s ease-out;
+}
+
+.not_scrolled2 {
+  background-color: #161c2a;
+  opacity: 0.9;
+  color: #ffffff;
+  -webkit-transition: all 0.6s ease-out;
+  -moz-transition: all 0.6s ease-out;
+  -o-transition: all 0.6s ease-out;
+  -ms-transition: all 0.6s ease-out;
+  transition: all 0.6s ease-out;
 }
 .bg-3 { 
   background-color: #ffffff; 

@@ -1,10 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import CustomDragDropContext from "./components/DragDropContext";
 import NavBar from "./components/Navbar";
 import Footer from "./components/footer";
 import Contact from "./layouts/contact";
 import About from "./layouts/about";
 import Stuff from "./layouts/stuff";
+import CookiesModal from "./components/CookiesModal";
 
 import {
   BrowserRouter,
@@ -14,6 +15,9 @@ import {
 import { Detector } from "react-detect-offline";
 
 export default function App() {
+
+  const cookiesAccepted = localStorage.getItem('cookiesAccepted');
+  const [shouldShow, setShouldShow] = useState(cookiesAccepted === null); 
   
   return (
     <Detector
@@ -23,6 +27,7 @@ export default function App() {
           <Routes>
             <Route path="/" element={
               <main className="body_part taskRow d-flex mx-auto mt-3 overflow-auto">
+                <CookiesModal shouldShow={shouldShow} setShouldShow={setShouldShow} />
                 <CustomDragDropContext />
               </main>
             } />
