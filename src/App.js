@@ -1,6 +1,6 @@
 import React from "react";
 import CustomDragDropContext from "./components/DragDropContext";
-import Navbar from "./components/Navbar";
+import NavBar from "./components/Navbar";
 import Footer from "./components/footer";
 import Contact from "./layouts/contact";
 import About from "./layouts/about";
@@ -19,14 +19,14 @@ export default function App() {
     <Detector
       render={({ online }) => (
         (online) ? <BrowserRouter>
-        <Navbar />
+        <NavBar />
           <Routes>
             <Route path="/" element={
               <main className="body_part taskRow d-flex mx-auto mt-3 overflow-auto">
                 <CustomDragDropContext />
               </main>
             } />
-            <Route path="contact" element={<Contact />} />
+            <Route path="contact" element={<Contact />} />   
             <Route path="about" element={<About />} />
             <Route path="stuff" element={<Stuff />} />
           </Routes>

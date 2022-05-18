@@ -1,37 +1,27 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
+import { Navbar, Nav, Container } from 'react-bootstrap';
 
-import { IoMenuOutline } from "react-icons/io5";
-import { Link, useLocation } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 
 
-export default function Navbar() {
-  
-  const [isSmall, setIsSmall] = useState(false);
-  const [offset, setOffset] = useState(0);
-  const loc = useLocation();
-  console.log()
-
-  useEffect(() => {
-    window.removeEventListener('scroll', () => setOffset(window.pageYOffset));
-    window.addEventListener('scroll', () => setOffset(window.pageYOffset), { passive: true });
-    return () => window.removeEventListener('scroll', () => setOffset(window.pageYOffset));
-  }, []);
-
-  const toggleActiveNavbar = () => {
-    setIsSmall(!isSmall);
-  };
+export default function NavBar() {
+  const location = useLocation();
 
   return (
     <header>
-      <nav className={`${(offset !== 0 ) ? "scrolled" : "not_scrolled"} main_nav ${(isSmall) ? "responsive" : ""}`} id="myTopnav">
-          <Link className={ (loc.pathname === "/") ? "active" : "" } to="/">Home</Link>
-          <Link className={ (loc.pathname === "/stuff") ? "active" : "" } to="/stuff">Stuff</Link>
-          <Link className={ (loc.pathname === "/about") ? "active" : "" } to="/about">About</Link>
-          <Link className={ (loc.pathname === "/contact") ? "active" : "" } to="/contact">Contact</Link>
-          <a href="/#" className="navbar_icon" onClick={ () => toggleActiveNavbar()}>
-            <IoMenuOutline />
-          </a>
-      </nav>
+      <Navbar bg="dark" variant="dark" expand="lg">
+        <Container>
+          <Navbar.Toggle aria-controls="basic-navbar-nav" />
+          <Navbar.Collapse id="basic-navbar-nav">
+            <Nav activeKey={location.pathname} className="me-auto">
+            <Nav.Link href="/">TODO-list</Nav.Link>
+              <Nav.Link href="/about">O mne</Nav.Link>
+              <Nav.Link href="/stuff">Stuff</Nav.Link>
+              <Nav.Link href="/contact">Kontakt</Nav.Link>
+            </Nav>
+          </Navbar.Collapse>
+        </Container>
+      </Navbar>
     </header>
   )
 }
